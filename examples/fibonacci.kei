@@ -1,0 +1,19 @@
+# Example: Fibonacci
+# The golden sequence, calculated as anticipated.
+
+protocol fibonacci(n):
+    foresee n <= 1:
+        yield n
+    otherwise:
+        yield fibonacci(n - 1) + fibonacci(n - 2)
+
+declare("=== FIBONACCI SEQUENCE ===")
+declare("")
+
+cycle from 0 to 15 as i:
+    result := fibonacci(i)
+    declare("fib(", i, ") =", result)
+
+declare("")
+declare("The sequence unfolds according to mathematical law.")
+declare("As anticipated.")

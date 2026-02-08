@@ -1,0 +1,35 @@
+{
+    "name": "keikaku",
+    "displayName": "Keikaku Language",
+    "description": "Syntax highlighting for the Keikaku programming language",
+    "version": "1.0.0",
+    "publisher": "keikaku",
+    "engines": {
+        "vscode": "^1.60.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "keikaku",
+                "aliases": [
+                    "Keikaku",
+                    "keikaku"
+                ],
+                "extensions": [
+                    ".kei"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "keikaku",
+                "scopeName": "source.keikaku",
+                "path": "./syntaxes/keikaku.tmLanguage.json"
+            }
+        ]
+    }
+}

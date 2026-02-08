@@ -1,0 +1,45 @@
+# Example: Guess the Number
+# A simple game - the system knows your moves
+
+declare("=== KEIKAKU NUMBER GAME ===")
+declare("")
+declare("I have selected a number between 1 and 100.")
+declare("You have 7 attempts to guess it.")
+declare("")
+
+# The number is predetermined
+secret := 42
+attempts := 0
+max_attempts := 7
+found := false
+
+cycle while attempts < max_attempts and not found:
+    attempts = attempts + 1
+    remaining := max_attempts - attempts
+    
+    declare("Attempt", attempts, "of", max_attempts)
+    guess_str := inquire("Your guess: ")
+    guess := number(guess_str)
+    
+    foresee guess == secret:
+        found = true
+        declare("")
+        declare("Correct. You found it in", attempts, "attempts.")
+        declare("Though of course, this outcome was anticipated.")
+    alternate guess < secret:
+        declare("  Too low. The target is higher.")
+        foresee remaining > 0:
+            declare("  Attempts remaining:", remaining)
+    otherwise:
+        declare("  Too high. The target is lower.")
+        foresee remaining > 0:
+            declare("  Attempts remaining:", remaining)
+
+foresee not found:
+    declare("")
+    declare("You have exhausted your attempts.")
+    declare("The number was:", secret)
+    declare("This outcome was... also anticipated.")
+
+declare("")
+declare("=== GAME CONCLUDED ===")

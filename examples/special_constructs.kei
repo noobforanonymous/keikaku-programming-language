@@ -1,0 +1,55 @@
+# Example: Special Constructs
+# Demonstrating all 5 special language constructs.
+
+declare("=== SPECIAL CONSTRUCTS DEMONSTRATION ===")
+declare("")
+
+# 1. SCHEME - Deferred execution
+declare("1. SCHEME - Deferred execution block")
+scheme:
+    designate x = 10
+    designate y = 20
+    declare("   Calculating:", x, "+", y, "=", x + y)
+execute
+
+declare("")
+
+# 2. PREVIEW - Side-effect-free evaluation
+declare("2. PREVIEW - Side-effect-free evaluation")
+designate counter = 0
+preview counter + 100
+declare("   counter is still:", counter)
+
+declare("")
+
+# 3. OVERRIDE - Forced assignment
+declare("3. OVERRIDE - Forced reassignment")
+designate constant = 42
+declare("   Before override:", constant)
+override constant = 999
+declare("   After override:", constant)
+
+declare("")
+
+# 4. ABSOLUTE - Strong assertion
+declare("4. ABSOLUTE - Strong assertion")
+designate value = 100
+absolute value > 50
+declare("   First assertion passed (value > 50)")
+
+# This one will fail
+designate check = 10
+absolute check > 100
+
+declare("")
+
+# 5. ANOMALY - Intentional deviation block
+declare("5. ANOMALY - Experimental code block")
+anomaly:
+    declare("   This code is acknowledged as deviation.")
+    designate experimental = "testing"
+    declare("   Variable:", experimental)
+
+declare("")
+declare("=== DEMONSTRATION COMPLETE ===")
+declare("All constructs behaved as anticipated.")

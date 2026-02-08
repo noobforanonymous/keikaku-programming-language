@@ -1,0 +1,4 @@
+entity Counter:
+    yield "init"
+
+manifest Counter(10)

@@ -1,0 +1,55 @@
+declare("=== Async/Await Tests ===")
+
+# 1. Basic sleep test
+declare("\n1. Sleep test (500ms delay):")
+declare("  Before sleep...")
+sleep(500)
+declare("  After sleep!")
+
+# 2. Deferred execution
+declare("\n2. Deferred execution (300ms):")
+protocol greet(name):
+    declare("  Hello, ", name, "!")
+    yield "done"
+
+defer(300, greet, "Keikaku")
+
+# 3. Promise creation and resolution
+declare("\n3. Promise test:")
+p := resolve("resolved value")
+declare("  Promise type: ", classify(p))
+result := await p
+declare("  Awaited result: ", result)
+
+# 4. Async protocol 
+declare("\n4. Async protocol test:")
+async protocol delayed_greeting(name):
+    sleep(200)
+    yield "Hello, " + name + "!"
+
+gen := delayed_greeting("World")
+message := proceed(gen)
+declare("  Message: ", message)
+
+# 5. Chained async
+declare("\n5. Chained async operations:")
+async protocol step1():
+    sleep(100)
+    yield 10
+
+async protocol step2(val):
+    sleep(100)
+    yield val * 2
+
+async protocol chain():
+    g1 := step1()
+    v1 := proceed(g1)
+    g2 := step2(v1)
+    v2 := proceed(g2)
+    yield v2
+
+gen := chain()
+final := proceed(gen)
+declare("  Final result: ", final)
+
+declare("\n=== Async Tests Complete! ===")

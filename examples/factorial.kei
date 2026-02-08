@@ -1,0 +1,15 @@
+# Example: Factorial
+# Recursive computation, as planned.
+
+protocol factorial(n):
+    foresee n <= 1:
+        yield 1
+    otherwise:
+        yield n * factorial(n - 1)
+
+# Calculate factorials
+cycle from 1 to 11 as n:
+    result := factorial(n)
+    declare(n, "! =", result)
+
+declare("Calculations complete. Each result was predetermined.")

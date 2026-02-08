@@ -1,0 +1,16 @@
+# Example: FizzBuzz
+# The classic programming challenge, executed according to keikaku.
+
+declare("Initiating FizzBuzz sequence...")
+
+cycle from 1 to 101 as n:
+    foresee n % 15 == 0:
+        declare("FizzBuzz")
+    alternate n % 3 == 0:
+        declare("Fizz")
+    alternate n % 5 == 0:
+        declare("Buzz")
+    otherwise:
+        declare(n)
+
+declare("Sequence complete. As anticipated.")

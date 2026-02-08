@@ -1,0 +1,25 @@
+# Maintainer: Regaan <regaan@rothackers.com>
+pkgname=keikaku
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="The ultimate anime-inspired programming language for masterminds."
+arch=('x86_64')
+url="https://keikaku.rothackers.com"
+license=('MIT')
+depends=('glibc')
+makedepends=('cmake' 'make' 'gcc')
+source=("git+https://github.com/noobforanonymous/keikaku-programming-language.git")
+md5sums=('SKIP')
+
+build() {
+	cd "$pkgname"
+	mkdir -p build
+	cd build
+	cmake ..
+	make
+}
+
+package() {
+	cd "$pkgname/build"
+	install -Dm755 keikaku "$pkgdir/usr/bin/keikaku"
+}

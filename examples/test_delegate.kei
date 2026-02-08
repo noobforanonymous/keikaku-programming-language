@@ -1,0 +1,52 @@
+declare("=== Testing Delegate (yield from) ===")
+
+# 1. Delegate from a list
+declare("\n1. Delegate from a list:")
+sequence list_delegator():
+    delegate [1, 2, 3]
+    delegate [4, 5, 6]
+
+cycle through list_delegator() as n:
+    declare("  - ", n)
+
+# 2. Delegate from another generator
+declare("\n2. Delegate from another generator:")
+sequence inner():
+    yield "a"
+    yield "b"
+    yield "c"
+
+sequence outer():
+    yield "start"
+    delegate inner()
+    yield "end"
+
+cycle through outer() as item:
+    declare("  - ", item)
+
+# 3. Flatten nested lists using delegate
+declare("\n3. Flatten nested lists:")
+sequence flatten(nested):
+    cycle through nested as item:
+        delegate item
+
+nested := [[1, 2], [3, 4], [5, 6]]
+cycle through flatten(nested) as n:
+    declare("  - ", n)
+
+# 4. Chain multiple generators
+declare("\n4. Chain multiple generators:")
+sequence range(start, end):
+    i := start
+    cycle while i < end:
+        yield i
+        i = i + 1
+
+sequence chain(gen1, gen2):
+    delegate gen1
+    delegate gen2
+
+cycle through chain(range(1, 4), range(10, 13)) as n:
+    declare("  - ", n)
+
+declare("\n=== Delegate Tests Complete! ===")

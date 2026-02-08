@@ -1,0 +1,59 @@
+# Advanced Features Demo - Keikaku v1.0.0
+# Demonstrates: entity (class), incorporate (import), attempt/recover (try/catch)
+
+declare("=== Advanced Keikaku Features Demo ===")
+declare("")
+
+# =============================================================
+# 1. INCORPORATE (Import)
+# =============================================================
+declare("--- 1. Incorporate (Import) ---")
+incorporate "examples/math_lib.kei"
+
+declare("Using imported functions:")
+declare("  square(5) =", square(5))
+declare("  cube(3) =", cube(3))
+declare("  factorial(5) =", factorial(5))
+declare("")
+
+# =============================================================
+# 2. ENTITY (Class/OOP)
+# =============================================================
+declare("--- 2. Entity (Class/OOP) ---")
+
+entity Person:
+    protocol greet(name):
+        declare("Hello,", name, "! I am a Person entity.")
+        yield true
+    
+    protocol introduce():
+        declare("I exist within the keikaku.")
+        yield true
+
+declare("Entity 'Person' defined.")
+declare("")
+
+entity Hero inherits Person:
+    protocol ability():
+        declare("My power: BANKAI!")
+        yield true
+
+declare("Entity 'Hero' with inheritance defined.")
+declare("")
+
+# =============================================================
+# 3. ATTEMPT/RECOVER (Error Handling)
+# =============================================================
+declare("--- 3. Attempt/Recover (Error Handling) ---")
+
+attempt:
+    declare("Attempting risky operation...")
+    x := undefined_variable
+    declare("This line should not execute")
+recover as err:
+    declare("Error caught:", err)
+    declare("The scenario recovered gracefully.")
+
+declare("")
+declare("=== All Advanced Features Demonstrated ===")
+declare("Everything proceeds according to plan. 計画")

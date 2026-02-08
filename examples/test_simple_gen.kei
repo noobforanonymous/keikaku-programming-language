@@ -1,0 +1,13 @@
+declare("=== Simple Sequence Test ===")
+
+sequence counter(n):
+    i := 0
+    cycle while i < n:
+        yield i
+        i = i + 1
+
+declare("Iterating through counter(3):")
+cycle through counter(3) as x:
+    declare("- ", x)
+
+declare("=== Done ===")

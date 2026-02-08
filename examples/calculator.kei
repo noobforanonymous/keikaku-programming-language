@@ -1,0 +1,44 @@
+# Example: Calculator
+# A simple interactive calculator.
+
+declare("=== KEIKAKU CALCULATOR ===")
+declare("Enter expressions to evaluate.")
+declare("Type 'exit' to conclude.")
+declare("")
+
+# We'll demonstrate non-interactive calculation
+designate a = 15
+designate b = 7
+
+declare("Given: a =", a, ", b =", b)
+declare("")
+
+declare("Addition:       a + b =", a + b)
+declare("Subtraction:    a - b =", a - b)
+declare("Multiplication: a * b =", a * b)
+declare("Division:       a / b =", a / b)
+declare("Integer Div:    a // b =", a // b)
+declare("Modulo:         a % b =", a % b)
+declare("Power:          a ** 2 =", a ** 2)
+
+declare("")
+declare("Comparison operations:")
+declare("  a == b:", a == b)
+declare("  a != b:", a != b)
+declare("  a > b:", a > b)
+declare("  a < b:", a < b)
+declare("  a >= b:", a >= b)
+declare("  a <= b:", a <= b)
+
+declare("")
+declare("Logical operations:")
+designate p = true
+designate q = false
+declare("  Given: p = true, q = false")
+declare("  p and q:", p and q)
+declare("  p or q:", p or q)
+declare("  not p:", not p)
+declare("  not q:", not q)
+
+declare("")
+declare("=== CALCULATIONS COMPLETE ===")

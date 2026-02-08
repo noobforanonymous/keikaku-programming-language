@@ -1,0 +1,33 @@
+declare("=== Keikaku Sequence Protocol (Generator) Test ===")
+
+# 1. Basic Fibonacci sequence
+sequence fibonacci():
+    a := 0
+    b := 1
+    cycle while true:
+        yield a
+        # Destructuring assignment
+        [a, b] := [b, a + b]
+
+declare("Iterating through first 10 Fibonacci numbers:")
+count := 0
+cycle through fibonacci() as n:
+    declare("- ", n)
+    count = count + 1
+    foresee count >= 10:
+        break
+
+declare("\n2. Nested sequences")
+sequence range(start, end):
+    cycle from start to end as i:
+    	yield i
+
+sequence squares(start, end):
+    cycle through range(start, end) as i:
+        yield i * i
+
+declare("Squares of 1 to 5:")
+cycle through squares(1, 6) as s:
+    declare("- ", s)
+
+declare("\n=== Test Complete! ===")

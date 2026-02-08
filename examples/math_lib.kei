@@ -1,0 +1,19 @@
+# Math Library for Keikaku
+# This file can be incorporated into other programs
+
+protocol square(x):
+    yield x * x
+
+protocol cube(x):
+    yield x * x * x
+
+protocol factorial(n):
+    foresee n <= 1:
+        yield 1
+    otherwise:
+        yield n * factorial(n - 1)
+
+protocol power(base, exp):
+    yield base ** exp
+
+declare("Math library loaded. Mathematical operations await.")

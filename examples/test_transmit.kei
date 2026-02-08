@@ -1,0 +1,56 @@
+declare("=== Testing Generator Send/Receive ===")
+
+# 1. Simple echo using transmit/receive
+declare("\n1. Echo generator:")
+sequence echo():
+    cycle while true:
+        received := receive()
+        foresee received:
+            yield "Echo: " + text(received)
+        otherwise:
+            yield "Waiting..."
+
+gen := echo()
+declare("  First call: ", proceed(gen))
+declare("  Send 'hello': ", transmit(gen, "hello"))
+declare("  Send 'world': ", transmit(gen, "world"))
+declare("  Send 42: ", transmit(gen, 42))
+
+# 2. Accumulator using transmit
+declare("\n2. Accumulator generator:")
+sequence accumulator():
+    total := 0
+    cycle while true:
+        received := receive()
+        foresee received:
+            total = total + received
+        yield total
+
+acc := accumulator()
+declare("  Initial: ", proceed(acc))
+declare("  Add 10: ", transmit(acc, 10))
+declare("  Add 5: ", transmit(acc, 5))
+declare("  Add 25: ", transmit(acc, 25))
+
+# 3. Running average
+declare("\n3. Running average:")
+sequence running_avg():
+    total := 0.0
+    count := 0
+    cycle while true:
+        received := receive()
+        foresee received:
+            total = total + received
+            count = count + 1
+        foresee count > 0:
+            yield total / count
+        otherwise:
+            yield 0.0
+
+avg := running_avg()
+proceed(avg)
+declare("  Avg after 10: ", transmit(avg, 10))
+declare("  Avg after 20: ", transmit(avg, 20)) 
+declare("  Avg after 30: ", transmit(avg, 30))
+
+declare("\n=== Send/Receive Tests Complete! ===")

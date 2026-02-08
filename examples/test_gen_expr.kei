@@ -1,0 +1,34 @@
+declare("=== Generator Expression Tests ===")
+
+# 1. Basic generator expression (transforms list)
+declare("\n1. Basic generator expression (squares):")
+squares := (x * x for x through [1, 2, 3, 4, 5])
+cycle through squares as n:
+    declare("  - ", n)
+
+# 2. Generator expression with filter
+declare("\n2. Generator expression with filter (evens only):")
+evens := (x for x through [1, 2, 3, 4, 5, 6, 7, 8] where x % 2 == 0)
+cycle through evens as n:
+    declare("  - ", n)
+
+# 3. Transform with filter
+declare("\n3. Doubled evens:")
+doubled_evens := (x * 2 for x through [1, 2, 3, 4, 5] where x % 2 == 0)
+cycle through doubled_evens as n:
+    declare("  - ", n)
+
+# 4. String transformation
+declare("\n4. String lengths:")
+words := ["hello", "world", "keikaku", "generator"]
+lengths := (measure(w) for w through words)
+cycle through lengths as len:
+    declare("  - ", len)
+
+# 5. Using with range (span)
+declare("\n5. Generator expression with span:")
+cubes := (x * x * x for x through span(1, 6))
+cycle through cubes as n:
+    declare("  - ", n)
+
+declare("\n=== Generator Expression Tests Complete! ===")

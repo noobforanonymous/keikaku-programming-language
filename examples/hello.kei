@@ -1,0 +1,6 @@
+# Example: Hello World
+# The first words of the keikaku.
+
+declare("The scenario begins.")
+declare("Hello, World!")
+declare("All proceeds according to plan.")

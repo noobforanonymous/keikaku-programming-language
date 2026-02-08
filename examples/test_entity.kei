@@ -1,0 +1,10 @@
+# Test Entity (Class)
+declare("Testing entity...")
+
+entity Greeter:
+    protocol say_hello():
+        declare("Hello from entity!")
+        yield true
+
+declare("Entity defined!")
+declare("Done!")

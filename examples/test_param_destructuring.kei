@@ -1,0 +1,25 @@
+declare("=== Keikaku Parameter Destructuring Test ===")
+
+# 1. Protocol with pattern parameters
+protocol analyze_point([x, y]):
+    declare("Analyzing Point -> X:", x, "Y:", y)
+
+analyze_point([15, 30])
+
+# 2. Lambda with nested pattern destructuring
+process := ([id, [val1, val2]]) => :
+    declare("Process Task", id)
+    declare("- Data A:", val1)
+    declare("- Data B:", val2)
+
+process([42, ["System", "Optimal"]])
+
+# 3. Mixed identifiers and patterns
+protocol configure(name, [width, height] := [1920, 1080]):
+    declare("Display:", name)
+    declare("- Dimensions:", width, "x", height)
+
+configure("Main Monitor", [2560, 1440])
+configure("Secondary Monitor")
+
+declare("=== Test Complete! ===")

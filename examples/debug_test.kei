@@ -1,0 +1,12 @@
+# Debug test
+declare("=== DEBUG TEST ===")
+
+# Test 1: Basic ternary
+x := 10
+a := "yes" foresee true otherwise "no"
+declare("a =", a)
+
+# Test 2: Simple list
+nums := [1, 2, 3]
+declare("nums =", nums)
+declare("nums[0] =", nums[0])

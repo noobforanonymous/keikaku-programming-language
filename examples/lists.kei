@@ -1,0 +1,32 @@
+# Example: Lists and Iteration
+# Working with collections, as planned.
+
+declare("=== LIST OPERATIONS ===")
+
+# Create a list
+designate numbers = [1, 2, 3, 4, 5]
+declare("Numbers:", numbers)
+declare("Length:", measure(numbers))
+
+# Iterate through list
+declare("")
+declare("Iterating through list:")
+cycle through numbers as n:
+    declare("  Item:", n, "| Squared:", n ** 2)
+
+# Create with span
+declare("")
+declare("Using span():")
+designate range_list = span(5, 10)
+cycle through range_list as i:
+    declare("  ", i)
+
+# Nested lists
+declare("")
+declare("Nested lists:")
+designate matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+cycle through matrix as row:
+    declare("  Row:", row)
+
+declare("")
+declare("=== COMPLETE ===")

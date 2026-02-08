@@ -1,0 +1,30 @@
+declare("=== Keikaku Rest Parameters Test ===")
+
+# 1. Protocol with Rest
+protocol multi_sum(prefix, ...args):
+    declare(prefix)
+    total := 0
+    cycle through args as x:
+        total = total + x
+    yield total
+
+declare("Sum 1:", multi_sum("Calculating sum:", 1, 2, 3, 4, 5))
+declare("Sum 2:", multi_sum("Solo:", 42))
+declare("Sum 3:", multi_sum("Empty list:"))
+
+# 2. Lambda with Rest (supporting multi-line blocks)
+avg := (...nums) => :
+    count := 0
+    sum := 0
+    cycle through nums as n:
+        sum = sum + n
+        count = count + 1
+    foresee count == 0:
+        yield 0
+    otherwise:
+        yield sum / count
+
+declare("Average 1:", avg(10, 20, 30))
+declare("Average 2:", avg())
+
+declare("=== Rest Parameters Test Complete! ===")

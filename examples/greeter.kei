@@ -1,0 +1,27 @@
+# Example: Interactive Greeter
+# An interactive program demonstrating input/output
+
+declare("=== KEIKAKU GREETER ===")
+declare("")
+
+name := inquire("What is your designation? ")
+
+declare("")
+declare("Greetings,", name)
+declare("Your arrival was anticipated.")
+declare("")
+
+age := inquire("How many cycles have you experienced? ")
+age_num := number(age)
+
+foresee age_num < 18:
+    declare("You are young. Much remains to be calculated.")
+alternate age_num < 30:
+    declare("You are in your prime planning years.")
+alternate age_num < 50:
+    declare("Experience has refined your strategic thinking.")
+otherwise:
+    declare("A master planner. Your wisdom is noted.")
+
+declare("")
+declare("This interaction has concluded. As planned.")

@@ -1,0 +1,31 @@
+declare("=== Keikaku Ascend (Super) Test ===")
+
+# 1. Basic Inheritance and protocol ascension
+entity LegacyMachine:
+    protocol construct(id):
+        self._id := id
+        declare("Legacy Machine initialized with ID:", id)
+    
+    protocol process():
+        declare("- Legacy processing initiated.")
+
+entity AdvancedMachine inherits LegacyMachine:
+    protocol construct(id, power):
+        # Ascend to the parent constructor
+        ascend construct(id)
+        self._power := power
+        declare("Advanced systems active. Power:", power)
+
+    protocol process():
+        declare("Advanced Machine is processing:")
+        # Ascend to parent protocol
+        ascend process()
+        declare("- Advanced enhancement applied.")
+
+declare("Manifesting machines...")
+m := manifest AdvancedMachine("MK-I", 9000)
+
+declare("\nRunning process protocol:")
+m.process()
+
+declare("\n=== Test Complete! ===")

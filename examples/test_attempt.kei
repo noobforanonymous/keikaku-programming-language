@@ -1,0 +1,11 @@
+# Test Attempt/Recover (Try/Catch)
+declare("Testing error handling...")
+
+attempt:
+    declare("Inside attempt block")
+    x := unknown_var
+    declare("After error - should not print")
+recover as err:
+    declare("Caught error:", err)
+
+declare("Done!")

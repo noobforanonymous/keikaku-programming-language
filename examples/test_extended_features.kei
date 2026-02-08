@@ -1,0 +1,40 @@
+declare("=== Keikaku Extended Features Test ===")
+
+# 1. List Comprehension
+nums := [1, 2, 3, 4, 5]
+squares := [x * x cycle through nums as x]
+declare("Original nums:", nums)
+declare("Squares (comprehension):", squares)
+
+evens := [x cycle through nums as x foresee x % 2 == 0]
+declare("Evens (comprehension with foresee):", evens)
+
+# 2. Spread Operator
+others := [10, 20]
+combined := [1, 2, ...others, 100]
+declare("Combined list with spread:", combined)
+
+protocol sum_three(a, b, c):
+    yield a + b + c
+
+args := [10, 20, 30]
+declare("Sum of spread args:", sum_three(...args))
+
+# 3. Situation (Match)
+protocol check_value(x):
+    situation x:
+        alignment 1:
+            declare("The Alignment is 1.")
+        alignment 2, 3:
+            declare("The Alignment is 2 or 3.")
+        otherwise:
+            declare("Alignment unanticipated.")
+
+declare("Checking 1:")
+check_value(1)
+declare("Checking 2:")
+check_value(2)
+declare("Checking 5:")
+check_value(5)
+
+declare("=== All Extended Tests Complete! ===")

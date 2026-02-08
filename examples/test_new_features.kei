@@ -1,0 +1,97 @@
+# Test All New Features - Keikaku v2.0
+declare("=== Keikaku Advanced Features Test ===")
+declare("")
+
+# ============ Phase 1: Core Enhancements ============
+declare("--- 1. Ternary Operator ---")
+x := 10
+result := "big" foresee x > 5 otherwise "small"
+declare("x =", x, "result =", result)
+
+y := 3
+result2 := "big" foresee y > 5 otherwise "small"
+declare("y =", y, "result2 =", result2)
+
+declare("")
+declare("--- 2. List Slicing ---")
+nums := [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+declare("Original:", nums)
+sliced1 := nums[2:5]
+declare("nums[2:5] =", sliced1)
+sliced2 := nums[:3]
+declare("nums[:3] =", sliced2)
+sliced3 := nums[7:]
+declare("nums[7:] =", sliced3)
+
+declare("")
+declare("--- 3. Lambda Functions ---")
+square := (n) => n * n
+res := square(5)
+declare("square(5) =", res)
+
+add := (a, b) => a + b
+res2 := add(3, 4)
+declare("add(3, 4) =", res2)
+
+declare("")
+
+# ============ Phase 2: OOP ============
+declare("--- 4. Entity (Class) & Manifest (Instance) ---")
+
+entity Counter:
+    protocol construct(start):
+        self.value := start
+        declare("Counter constructed with value:", self.value)
+    
+    protocol increment():
+        self.value := self.value + 1
+        yield self.value
+    
+    protocol get():
+        yield self.value
+
+declare("Manifesting Counter...")
+c := manifest Counter(10)
+declare("Initial value:", c.get())
+
+declare("Incrementing...")
+new_val := c.increment()
+declare("New value:", new_val)
+declare("Getting again:", c.get())
+
+declare("")
+
+# ============ Phase 3-4: Functional & Data ============
+declare("--- 5. Higher-Order Functions ---")
+numbers := [1, 2, 3, 4, 5]
+declare("Original list:", numbers)
+
+# Transform (map)
+doubled := transform(numbers, (n) => n * 2)
+declare("transform (n*2):", doubled)
+
+# Select (filter)
+evens := select(numbers, (n) => n % 2 == 0)
+declare("select (evens):", evens)
+
+# Fold (reduce)
+total := fold(numbers, (acc, n) => acc + n, 0)
+declare("fold (sum):", total)
+
+declare("")
+declare("--- 6. JSON ---")
+data := [1, 2, 3]
+json_str := encode_json(data)
+declare("encode_json([1,2,3]) =", json_str)
+
+parsed := decode_json("42")
+declare("decode_json('42') =", parsed)
+
+declare("")
+declare("--- 7. Timestamp ---")
+ts := timestamp()
+declare("Current timestamp:", ts)
+
+declare("")
+declare("=== All Tests Complete! ===")
+declare("計画通り - Everything proceeds according to plan.")

@@ -1,0 +1,36 @@
+declare("=== Keikaku New Manifestations Test ===")
+
+# 1. Destructuring
+[x, y] := [10, 20]
+declare("x:", x)
+declare("y:", y)
+
+[a, [b, c]] := [1, [2, 3]]
+declare("a, b, c matches expected [1, 2, 3]?", [a, b, c])
+
+# 2. Private Fields
+entity SecretKeeper:
+    protocol construct(val):
+        self._secret := val
+    
+    protocol get_secret():
+        yield self._secret
+    
+    protocol set_secret(new_val):
+        self._secret = new_val
+
+keeper := manifest SecretKeeper("Protocol 42")
+declare("Secret via protocol:", keeper.get_secret())
+
+# This should FAIL with a runtime error
+declare("Attempting direct access to '_secret'...")
+attempt:
+    declare("Direct access result:", keeper._secret)
+recover as err:
+    declare("Intercepted deviation:", err)
+
+# Internal modification check
+keeper.set_secret("New Plan")
+declare("Modified secret via protocol:", keeper.get_secret())
+
+declare("=== Test Complete! ===")

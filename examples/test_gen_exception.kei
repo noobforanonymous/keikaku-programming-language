@@ -1,0 +1,39 @@
+declare("=== Generator Exception Tests ===")
+
+# 1. Basic disrupt test - simpler version
+declare("\n1. Basic disrupt test:")
+sequence processor():
+    cycle while true:
+        yield "processing..."
+
+gen := processor()
+declare("  First: ", proceed(gen))
+declare("  Second: ", proceed(gen))
+declare("  Third: ", proceed(gen))
+
+# 2. Disrupt function test
+declare("\n2. Disrupt test:")
+sequence with_state():
+    count := 0
+    cycle while true:
+        count = count + 1
+        yield count
+
+gen2 := with_state()
+declare("  Count 1: ", proceed(gen2))
+declare("  Count 2: ", proceed(gen2))
+disrupt(gen2, "interruption")
+declare("  After disrupt - Count 3: ", proceed(gen2))
+
+# 3. Test disrupt return value  
+declare("\n3. Disrupt return value:")
+sequence echo_worker():
+    cycle while true:
+        yield "working"
+
+gen3 := echo_worker()
+declare("  Normal: ", proceed(gen3))
+result := disrupt(gen3, "error message")
+declare("  Disrupt result: ", result)
+
+declare("\n=== Exception Tests Complete! ===")

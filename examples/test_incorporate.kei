@@ -1,0 +1,7 @@
+# Test Incorporate Feature
+declare("Testing incorporate...")
+
+incorporate "examples/math_lib.kei"
+
+declare("Square of 5:", square(5))
+declare("Done!")
