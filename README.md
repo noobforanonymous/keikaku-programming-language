@@ -1,5 +1,7 @@
 # Keikaku Programming Language
 
+[![CI](https://github.com/noobforanonymous/keikaku-programming-language/actions/workflows/ci.yml/badge.svg)](https://github.com/noobforanonymous/keikaku-programming-language/actions/workflows/ci.yml)
+
 **Official Website: [https://keikaku.rothackers.com](https://keikaku.rothackers.com)**
 
 Keikaku is a dynamic, interpreted programming language designed for expressive control flow and structured state management. It features first-class support for lazy evaluation, generators with bidirectional communication, and asynchronous programming primitives.

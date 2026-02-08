@@ -1,0 +1,15 @@
+# Control Flow Test: foresee and cycle
+# Expected:
+# High
+# 1
+# 2
+# 3
+
+val := 15
+foresee val > 10:
+    declare("High")
+otherwise:
+    declare("Low")
+
+cycle from 1 to 4 as i:
+    declare(i)

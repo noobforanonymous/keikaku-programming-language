@@ -1,0 +1,16 @@
+# Sequence Delegation Test
+# Expected:
+# Inner 1
+# Inner 2
+# Outer
+
+sequence inner():
+    yield "Inner 1"
+    yield "Inner 2"
+
+sequence outer():
+    delegate inner()
+    yield "Outer"
+
+cycle through outer() as item:
+    declare(item)

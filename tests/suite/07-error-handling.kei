@@ -1,0 +1,14 @@
+# Error Handling Test
+# Expected:
+# Inside attempt
+# No error
+# Done
+
+attempt:
+    declare("Inside attempt")
+    x := 10
+    declare("No error")
+recover as err:
+    declare("Caught:", err)
+
+declare("Done")

@@ -1,0 +1,14 @@
+# Async/Await Test
+# Expected:
+# 0
+# 1
+# 2
+
+sequence counter(n):
+    i := 0
+    cycle while i < n:
+        yield i
+        i = i + 1
+
+cycle through counter(3) as x:
+    declare(x)

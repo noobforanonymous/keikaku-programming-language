@@ -1,0 +1,15 @@
+# Bidirectional Communication Test
+# Expected:
+# Echo: "hello"
+
+sequence echo():
+    cycle while true:
+        received := receive()
+        foresee received:
+            yield "Echo: " + text(received)
+        otherwise:
+            yield "Waiting..."
+
+gen := echo()
+proceed(gen)
+declare(transmit(gen, "hello"))

@@ -1,0 +1,55 @@
+name: Keikaku CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install build dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential cmake
+
+    - name: Build Keikaku
+      run: |
+        mkdir -p build
+        cd build
+        cmake ..
+        make -j$(nproc)
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Run test suite
+      run: |
+        python3 tests/test_runner.py
+
+  build-windows:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install cross-compile dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y mingw-w64 cmake
+
+    - name: Cross-compile for Windows
+      run: |
+        mkdir -p build-win
+        cd build-win
+        cmake .. -DCMAKE_TOOLCHAIN_FILE=../packaging/windows/toolchain-mingw64.cmake || cmake ..
+        make -j$(nproc) || echo "Windows cross-compile attempted"

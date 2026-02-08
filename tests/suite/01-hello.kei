@@ -1,0 +1,12 @@
+# Basic Syntax Test
+# Expected:
+# Hellox
+# 20
+
+x := "Hello"
+y := "x"
+declare(x + y)
+
+z := 10
+z = z + 10
+declare(z)

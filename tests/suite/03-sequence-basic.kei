@@ -1,0 +1,11 @@
+# Basic Sequence Test
+# Expected:
+# A
+# B
+
+sequence alpha():
+    yield "A"
+    yield "B"
+
+cycle through alpha() as item:
+    declare(item)
