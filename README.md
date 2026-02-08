@@ -85,6 +85,11 @@ keikaku script.kei
 - [Asynchronous Programming](docs/async.md): Using async/await, promises, and concurrency patterns.
 - [Error Handling](docs/error_handling.md): Managing exceptions and control flow disruptions.
 
-## License
+## Website
+**[https://keikaku.rothackers.com](https://keikaku.rothackers.com)**
 
+## Author
+Architected by **Regaan** // Founder of [Rot Hackers](https://rothackers.com)
+
+## License
 MIT License
