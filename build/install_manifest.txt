@@ -1,2 +1,0 @@
-/usr/local/bin/keikaku
-/usr/local/include/keikaku.h

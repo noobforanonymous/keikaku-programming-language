@@ -1,1 +1,0 @@
-/usr/bin/cc  -Wall -Wextra -O2 -Wl,--dependency-file=CMakeFiles/keikaku.dir/link.d CMakeFiles/keikaku.dir/compiler/main.c.o CMakeFiles/keikaku.dir/compiler/lexer.c.o CMakeFiles/keikaku.dir/compiler/parser.c.o CMakeFiles/keikaku.dir/compiler/ast.c.o CMakeFiles/keikaku.dir/compiler/interpreter.c.o -o keikaku  -lm

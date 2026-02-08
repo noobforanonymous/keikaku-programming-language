@@ -21,6 +21,7 @@ jobs:
 
     - name: Build Keikaku
       run: |
+        rm -rf build
         mkdir -p build
         cd build
         cmake ..
@@ -49,6 +50,7 @@ jobs:
 
     - name: Cross-compile for Windows
       run: |
+        rm -rf build-win
         mkdir -p build-win
         cd build-win
         cmake .. -DCMAKE_TOOLCHAIN_FILE=../packaging/windows/toolchain-mingw64.cmake || cmake ..
