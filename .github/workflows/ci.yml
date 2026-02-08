@@ -37,21 +37,24 @@ jobs:
         python3 tests/test_runner.py
 
   build-windows:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Install cross-compile dependencies
+    - name: Build Keikaku on Windows
       run: |
-        sudo apt-get update
-        sudo apt-get install -y mingw-w64 cmake
+        if (Test-Path build) { Remove-Item -Recurse -Force build }
+        mkdir build
+        cd build
+        cmake .. -G "MinGW Makefiles"
+        cmake --build . --config Release
+      shell: pwsh
 
-    - name: Cross-compile for Windows
-      run: |
-        rm -rf build-win
-        mkdir -p build-win
-        cd build-win
-        cmake .. -DCMAKE_TOOLCHAIN_FILE=../packaging/windows/toolchain-mingw64.cmake || cmake ..
-        make -j$(nproc) || echo "Windows cross-compile attempted"
+    - name: Upload Windows binary
+      uses: actions/upload-artifact@v4
+      with:
+        name: keikaku-windows
+        path: build/*.exe
+        if-no-files-found: ignore
