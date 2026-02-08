@@ -1,5 +1,7 @@
 # Keikaku Programming Language
 
+**Official Website: [https://keikaku.rothackers.com](https://keikaku.rothackers.com)**
+
 Keikaku is a dynamic, interpreted programming language designed for expressive control flow and structured state management. It features first-class support for lazy evaluation, generators with bidirectional communication, and asynchronous programming primitives.
 
 ## Key Features
@@ -84,9 +86,6 @@ keikaku script.kei
 - [Generators & Iteration](docs/generators.md): In-depth guide to sequences, delegation, and lazy evaluation.
 - [Asynchronous Programming](docs/async.md): Using async/await, promises, and concurrency patterns.
 - [Error Handling](docs/error_handling.md): Managing exceptions and control flow disruptions.
-
-## Website
-**[https://keikaku.rothackers.com](https://keikaku.rothackers.com)**
 
 ## Author
 Architected by **Regaan** // Founder of [Rot Hackers](https://rothackers.com)
